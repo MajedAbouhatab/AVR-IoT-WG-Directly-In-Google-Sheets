@@ -18,7 +18,7 @@ void setup() {
   // chipSelect, irq, reset, enable = PIN_PA7,PIN_PF2,PIN_PA1,PIN_PF3
   WiFi.setPins(7, 22, 1, 23);
   // Connect to WiFi
-  while (WiFi.begin("", "") != WL_CONNECTED) yield();
+  while (WiFi.begin("<SSID>", "<password>") != WL_CONNECTED) yield();
   // AVR-IoT WG is too fast for BPM
   delay(4000);
   // Turn BPM On
@@ -62,7 +62,7 @@ void setup() {
   const char* host = "script.google.com";
   client.connect(host, 443);
   // POST to Web App
-  client.println("POST /macros/s/<>/exec HTTP/1.1");
+  client.println("POST /macros/s/<DeploymentID>/exec HTTP/1.1");
   client.println("Host: " + (String)host + "\r\nContent-Type: application/json\r\nContent-Length: " + (String)Values.length() + "\r\n\r\n" + Values);
 }
 
